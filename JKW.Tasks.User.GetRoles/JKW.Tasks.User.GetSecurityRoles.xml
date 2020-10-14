@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ManagementPack SchemaVersion="2.0" ContentReadable="true" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Manifest>
+    <Identity>
+      <ID>JKW.Tasks.User.GetSecurityRoles</ID>
+      <Version>1.0.0.15</Version>
+    </Identity>
+    <Name>JKW.Tasks.User.GetSecurityRoles</Name>
+    <References>
+      <Reference Alias="System">
+        <ID>System.Library</ID>
+        <Version>7.5.8501.0</Version>
+        <PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+      </Reference>
+	  <Reference Alias="Console">
+		<ID>Microsoft.EnterpriseManagement.ServiceManager.UI.Console</ID>
+		<Version>7.7.16.34</Version>
+		<PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+	  </Reference>
+	  <Reference Alias="Config">
+		<ID>ServiceManager.ConfigurationManagement.Library</ID>
+		<Version>7.7.16.0</Version>
+		<PublicKeyToken>31bf3856ad364e35</PublicKeyToken>
+	  </Reference>
+    </References>
+  </Manifest>
+  <Categories>
+        <Category ID="Category.JKW.GetSecurityRoles.Task" Value="Console!Microsoft.EnterpriseManagement.ServiceManager.ManagementPack">
+          <ManagementPackName>JKW.Tasks.User.GetSecurityRoles</ManagementPackName>
+          <ManagementPackVersion>1.0.0.15</ManagementPackVersion>
+          <ManagementPackPublicKeyToken>70c27c5653b698b0</ManagementPackPublicKeyToken>
+        </Category>
+		<Category ID="UserRoles64.Image" Target="UserRoles64" Value="System!System.Internal.ManagementPack.Images.u16x16Icon" />
+   </Categories>
+   <Presentation>
+	<ConsoleTasks>
+        <ConsoleTask ID="GetUserRoles" Accessibility="Public" Enabled="true" Target="System!System.Domain.User" RequireOutput="false">
+          <Assembly>Console!SdkDataAccessAssembly</Assembly>
+          <Handler>Microsoft.EnterpriseManagement.UI.SdkDataAccess.ConsoleTaskHandler</Handler>
+          <Parameters>
+            <Argument Name="Assembly">JKW.Tasks.User.GetRoles</Argument>
+            <Argument Name="Type">JKW.Tasks.User.GetRoles.GetRoles</Argument>
+          </Parameters>
+        </ConsoleTask>
+    </ConsoleTasks>
+	<ImageReferences>
+		<ImageReference ElementID="GetUserRoles" ImageID="UserRoles64" />
+	</ImageReferences>
+	</Presentation>
+	<LanguagePacks>
+		<LanguagePack ID="ENU" IsDefault="true">
+			<DisplayStrings>
+				<DisplayString ElementID="JKW.Tasks.User.GetSecurityRoles" >
+					<Name>GetUserRoles Task</Name>
+				</DisplayString>
+				<DisplayString ElementID="GetUserRoles" >
+					<Name>Get User Roles</Name>
+				</DisplayString>
+		</DisplayStrings>
+	  </LanguagePack>
+	</LanguagePacks>
+	 <Resources>
+        <Assembly ID="JKW.Tasks.User.GetRoles" Accessibility="Public" FileName="JKW.Tasks.User.GetRoles.dll" HasNullStream="false" QualifiedName="JKW.Tasks.User.GetRoles, Version=1.0.0.15, Culture=neutral, PublicKeyToken=70c27c5653b698b0" />
+        <Image ID="UserRoles64" Accessibility="Public" HasNullStream="false" FileName="UserRoles64.ico" />
+    </Resources>
+</ManagementPack>
