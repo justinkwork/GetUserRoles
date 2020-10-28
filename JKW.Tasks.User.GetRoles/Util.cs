@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using Microsoft.Win32;
 using System.Windows.Forms;
@@ -109,7 +109,7 @@ namespace JKW.Tasks.User.GetRoles
             EnterpriseManagementGroup _emg = EnterpriseManagementGroup.Connect(strServerName);
 
             UserMembership userGroups = GetUserGroupMembershipRecursive(username);
-            if (userGroups.MemberOf.Count > 0)
+            if (userGroups != null)
             {
 
                 List<RoleItem> items = new List<RoleItem>();
