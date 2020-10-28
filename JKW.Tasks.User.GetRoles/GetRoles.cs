@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Microsoft.EnterpriseManagement.UI.SdkDataAccess;
@@ -29,11 +29,26 @@ namespace JKW.Tasks.User.GetRoles
                 {
                     //Get User object instance
                     dataItemUser = FormUtilities.Instance.GetFormDataContext(node);
+
                     userName = dataItemUser["UserName"] as string;
-                    List<RoleItem> roleItems = Util.GetMemberships(userName);
-                    ShowRoleGrid form = new ShowRoleGrid(roleItems);
-                    form.Title = string.Format("Roles for {0}", userName);
-                    form.ShowDialog();
+                    try
+                    {
+                        List<RoleItem> roleItems = Util.GetMemberships(userName);
+                        if (roleItems.Count > 0)
+                        {
+                            ShowRoleGrid form = new ShowRoleGrid(roleItems);
+                            form.Title = string.Format("Roles for {0}", userName);
+                            form.ShowDialog();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Roleset was empty!");
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
                 //Else started from view
                 else
